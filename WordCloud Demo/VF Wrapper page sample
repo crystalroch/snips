@@ -1,0 +1,28 @@
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script src="{!$Resource.jQueryWordCloud}"/>
+<apex:includeScript value="/soap/ajax/15.0/connection.js"/>
+<apex:includeScript value="/soap/ajax/15.0/apex.js"/>
+
+
+<apex:attribute name="objectType" description="type of records to get data from" type="String" required="true"/>
+    <apex:attribute name="records" description="records to get data from" type="String" required="false"/>
+    <apex:attribute name="fields" description="fields on records to aggregate data from" type="String" required="true" default="Name"/> 
+
+    <apex:attribute name="lowerbound" description="words below this frequency will not be dipslayed" type="String" required="false" default="0"/> 
+    <apex:attribute name="skipwords" description="words not to display regardless of frequency" type="String" required="false" default="and,the,to,a,of,for,as,i,with,it,is,on,that,this,can,in,be,has,if"/> 
+
+    <apex:attribute name="grid" description="word spacing; smaller is more tightly packed but takes longer" type="integer" required="false" default="8"/>    
+    <apex:attribute name="factor" description="font resizing factor; default 0 means automatically fill the container" type="integer" required="false" default="0"/>
+    <apex:attribute name="normalize" description="reduces outlier weights for a more attractive output" type="boolean" required="false" default="false"/> 
+
+    <apex:attribute name="font" description=" font family, identical to CSS font-family attribute" type="string" required="false" default="Futura, Helvetica, sans-serif"/> 
+    <apex:attribute name="shape" description="one of 'circle', 'square', 'diamond', 'triangle', 'triangle-forward', 'x', 'pentagon' or 'star'" type="string" required="false" default="circle"/> 
+
+    <apex:attribute name="backgroundColor" description="background color" type="string" required="false" default="transparent"/>
+    <apex:attribute name="colorTheme" description="dark or light" type="string" required="false" default="light"/>
+
+    <apex:attribute name="width" description="how wide should the cloud be (css values such as a pixel or inch amount)?" type="string" required="false" default="600px"/>  
+    <apex:attribute name="height" description="how tal; should the cloud be (css values such as a pixel or inch amount)?" type="string" required="false" default="400px"/>  
+    <apex:attribute name="autoRefresh" description="should the wordcloud automatically refresh every so often?" type="boolean" required="false" default="false"/>
+
+    <apex:attribute name="refreshInterval" description="how often shold the cloud refresh? In seconds" type="integer" required="false" default="5"/>

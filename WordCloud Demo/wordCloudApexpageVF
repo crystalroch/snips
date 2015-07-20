@@ -1,0 +1,37 @@
+<apex:page standardController="account">
+    <!--- 
+    WordCloud comes as a component that can be invoked from any visualforce page. You must pass it the object type to build the cloud for. The rest is optional.
+    objectType: the type of sObject to get data from to power the word cloud
+    fields: the records on the objects who's content will be used to create the cloud. Must be comma separated
+    records: a list of ids which to query for. If none is provided all records of the objectType are queried
+    skipwords: words that will not be included in the word cloud no matter how many times they appear. 
+    lowerbound: the minimum number of times a word must appear in the text before it is displayed in the cloud.
+    grid: word spacing; smaller is more tightly packed but takes longer
+    factor: font resizing factor; default "0" means automatically fill the container
+    normalize: reduces outlier weights for a more attractive output
+    shape: shape of the cloud. Must be one of "circle", "square", "diamond", "triangle", "triangle-forward", "x", "pentagon" or "star"
+    font: font family, identical to CSS font-family attribute
+    width: width of the cloud. Can be a percent or pixel/inch amount.
+    height: height of the cloud. Must be a pixel or inch amount.
+    backgroundColor: a hexidecimal (#000000) or string color value. Use 'transparent' for no background
+    colorTheme: theme for word colors. Use 'dark' or 'light'
+    autoRefresh: automatically refresh the cloud after a specified interval?
+    refreshInterval: interval (in seconds) after which the cloud is automatically refreshed
+    --->
+    <c:wordCloud objectType="account" 
+                 records="{!account.id}" 
+                 fields="Name,Type,Ownership,Description"
+                 lowerbound="1"
+                 skipwords="and,an,any,so,or,are,the,to,a,of,for,as,i,with,it,is,on,that,this,can,in,be,has,if"
+                 grid="8"
+                 factor="0"
+                 normalize="false"
+                 font="Futura, Helvetica, sans-serif"
+                 shape="triangle"
+                 width="100%"
+                 height="400px" 
+                 backgroundColor="black"
+                 colorTheme="light" 
+                 autoRefresh="false" 
+                 refreshInterval="15" />
+</apex:page>
